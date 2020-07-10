@@ -1,9 +1,14 @@
 #include <iostream>
 
+#include "Command.hpp"
+#include "InputHandler.hpp"
+
 using namespace std;
 
 int main() {
-  cout << "Hello World" << endl;
-  
+  InputHandler handler = InputHandler();
+  handler.pressButton("X");
+  handler.pressButton("Y");
+
   return 0;
 }
