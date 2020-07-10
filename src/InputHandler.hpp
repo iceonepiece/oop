@@ -1,24 +1,31 @@
 #pragma once
+#include "Command.hpp"
 
 using namespace std;
 
-void fire() {
-  cout << ">> fire";
-}
-
-void jump() {
-  cout << ">> jump";
-}
-
 class InputHandler {
 public:
-  void pressButton(const char* KEY) {
-    cout << KEY << " is pressed. Do "; 
+  InputHandler() {
+    this->buttonX = new NullCommand();
+    this->buttonY = new NullCommand();
+  }
 
-    if (KEY == "X") fire();
-    else if (KEY == "Y") jump();
-    else cout << "Nothing";
+  void setCommand(const char* KEY, Command* command) {
+    if (KEY == "X") buttonX = command;
+    else if (KEY == "Y") buttonY = command;
+  }
+
+  void pressButton(const char* KEY) {
+    cout << KEY << " is pressed. Do ";
+
+    if (KEY == "X") buttonX->execute();
+    else if (KEY == "Y") buttonY->execute();
+    else cout << "nothing";
 
     cout << endl;
   }
+
+private:
+  Command* buttonX;
+  Command* buttonY;
 };
