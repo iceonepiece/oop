@@ -3,26 +3,22 @@
 using namespace std;
 
 void fire() {
-  cout << ">> fire" << endl;
+  cout << ">> fire";
 }
 
 void jump() {
-  cout << ">> jump" << endl;
+  cout << ">> jump";
 }
 
 class InputHandler {
 public:
   void pressButton(const char* KEY) {
-    cout << "Press key: " << KEY << endl;
+    cout << KEY << " is pressed. Do "; 
 
     if (KEY == "X") fire();
     else if (KEY == "Y") jump();
-    else cout << "Nothing" << endl;
+    else cout << "Nothing";
 
     cout << endl;
   }
-
-private:
-  Command* buttonX;
-  Command* buttonY;
 };
